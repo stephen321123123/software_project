@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organisation;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class OrganisationController extends Controller
@@ -12,7 +13,8 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-        //
+        $organisations = Organisation::all(); //fetch all data from the database
+        return view('organisations.index', compact('organisations'));
     }
 
     /**
