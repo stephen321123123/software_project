@@ -37,7 +37,7 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-        //
+        return view('organizations.show')->with('organization', $organization);
     }
 
     /**

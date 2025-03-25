@@ -12,15 +12,17 @@
                     <h3 class="font-semibold text-lg mb-4">List of Organizations:</h3>
                     <div class="grid grid-cols1 gap-6">
                         @foreach($organizations as $organization)
-                        <x-organization-card
-                        :name="$organization->name"
-                        :image="$organization->image"
-                        :description="$organization->description"
-                        :url="$organization->url"
-                        :organization_type="$organization->organization_type"
-                        :contact="$organization->contact"
-                        :email="$organization->email"
-                        />
+                            <a href="{{ route('organizations.show', $organization)}}">
+                                <x-organization-card
+                                    :name="$organization->name"
+                                    :image="$organization->image"
+                                    :description="\Illuminate\Support\Str::limit($organization->description, 100)"
+                                    :url="$organization->url"
+                                    :organization_type="$organization->organization_type"
+                                    :contact="$organization->contact"
+                                    :email="$organization->email"
+                                />
+                            </a>
                         @endforeach
                     </div>
                 </div>
