@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OrganizationController extends Controller
 {
@@ -21,7 +22,7 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        //
+        return view('organizations.create');
     }
 
     /**
@@ -29,7 +30,34 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|max:300',
+            'url' => 'required',
+            'organization_type' => 'required',
+            'contact' => 'required',
+            'email' => 'required'
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/organizations'), $imageName);
+        }
+
+        Organization::create([
+            'name' => $request->name,
+            'image' => $imageName,
+            'description' => $request->description,
+            'url' => $request->url,
+            'organization_type' => $request->organization_type,
+            'contact' => $request->contact,
+            'email' => $request->email,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+         return to_route('organizations.index')->with('success', 'Organization created successfully!!!');
     }
 
     /**
