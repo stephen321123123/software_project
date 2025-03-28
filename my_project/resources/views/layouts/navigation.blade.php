@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('organizations.create')" :active="request()->routeIs('organizations.create')">
                         {{ __('Create new Organization') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')">
+                        {{ __('Inter-Active Map') }}
+                    </x-nav-link>
                 </div>
             </div>
 

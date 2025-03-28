@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\LocationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/organizations/create', [OrganizationController::class, 'create'])->name('organizations.create');
     Route::get('/organizations/{organization}', [OrganizationController::class, 'show'])->name('organizations.show');
     Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
+
+    Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
+    Route::get('/locations{location}', [LocationController::class, 'show'])->name('locations.show');
 });
 
 require __DIR__.'/auth.php';
