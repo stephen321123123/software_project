@@ -4,14 +4,16 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MapController; // Ensure this is imported
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Define the map route correctly
 Route::get('/map', function () {
-    return view('locations.map'); 
-});
+    return view('locations.map');
+})->name('map');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,14 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/organizations/{organization}', [OrganizationController::class, 'show'])->name('organizations.show');
     Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
 
-   
-
-Route::get('/locations', [LocationController::class, 'getLocations']);
-
+    // Fix: Ensure location routes are defined properly
     Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
-    Route::get('/locations{location}', [LocationController::class, 'show'])->name('locations.show');
+    Route::get('/locations/{location}', [LocationController::class, 'show'])->name('locations.show');
 });
 
 require __DIR__.'/auth.php';
-
-
