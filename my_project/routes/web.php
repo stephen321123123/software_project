@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/map', function () {
+    return view('locations.map'); 
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -22,6 +26,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/organizations/create', [OrganizationController::class, 'create'])->name('organizations.create');
     Route::get('/organizations/{organization}', [OrganizationController::class, 'show'])->name('organizations.show');
     Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
+
+   
+
+Route::get('/locations', [LocationController::class, 'getLocations']);
 
     Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
     Route::get('/locations{location}', [LocationController::class, 'show'])->name('locations.show');

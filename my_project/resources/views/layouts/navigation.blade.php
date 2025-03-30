@@ -19,6 +19,10 @@
                     <x-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')" class="text-white hover:text-green-200">
                         {{ __('Inter-Active Map') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('map')" :active="request()->routeIs('map')" class="text-white hover:text-green-200">
+                    {{ __('Inter-Active Map') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
