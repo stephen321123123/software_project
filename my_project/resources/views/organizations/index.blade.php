@@ -33,7 +33,7 @@
                                 <!-- Edit and Delete Buttons Inside the Card -->
                                 <div class="mt-4 flex space-x-2">
                                     <!-- Edit Button -->
-                                    <a href="{{ route('organizations.edit', $organization) }}" class="text-white bg-orange-500 hover:bg-orange-700 py-2 px-4 rounded-lg font-semibold">
+                                    <a href="{{ route('organizations.edit', $organization) }}" class="text-white bg-green-500 hover:bg-green-700 py-2 px-4 rounded-lg font-semibold">
                                         Edit
                                     </a>
 
