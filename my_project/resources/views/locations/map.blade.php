@@ -9,16 +9,62 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
     <style>
+        /* General body and page styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header styling */
+        h1 {
+            text-align: center;
+            color: #2C3E50;
+            margin: 20px;
+            font-size: 2em;
+        }
+
+        /* Map container styling */
         #map {
             height: 500px;
             width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+
+        /* Popup and marker styling */
+        .leaflet-popup-content {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .leaflet-popup-content b {
+            color: #2C3E50;
+        }
+
+        .leaflet-popup-content strong {
+            color: #16A085;
+        }
+
+        /* Adding some padding and centering the content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Interactive Map of Ireland</h1>
-    <div id="map"></div>
+    <div class="container">
+        <h1>Interactive Map of Ireland</h1>
+        <div id="map"></div>
+    </div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

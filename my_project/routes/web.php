@@ -29,6 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/organizations/{organization}', [OrganizationController::class, 'show'])->name('organizations.show');
     Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
 
+    Route::get('/organizations/{organization}/edit', [OrganizationController::class, 'edit'])->name('organizations.edit');
+Route::put('/organizations/{organization}', [OrganizationController::class, 'update'])->name('organizations.update');
+Route::delete('/organizations/{organization}', [OrganizationController::class, 'destroy'])->name('organizations.destroy');
+
+
     // Fix: Ensure location routes are defined properly
     Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
     Route::get('/locations/{location}', [LocationController::class, 'show'])->name('locations.show');

@@ -73,7 +73,7 @@ class OrganizationController extends Controller
      */
     public function edit(Organization $organization)
     {
-        //
+        return view('organizations.edit', compact('organization'));
     }
 
     /**
@@ -81,14 +81,53 @@ class OrganizationController extends Controller
      */
     public function update(Request $request, Organization $organization)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Image is optional for update
+            'description' => 'required',
+            'url' => 'required',
+            'organization_type' => 'required',
+            'contact' => 'required',
+            'email' => 'required'
+        ]);
+    
+        if ($request->hasFile('image')) {
+            if ($organization->image && file_exists(public_path('images/organizations/'.$organization->image))) {
+                unlink(public_path('images/organizations/'.$organization->image)); 
+            }
+    
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/organizations'), $imageName); 
+        } else {
+            $imageName = $organization->image;
+        }
+    
+        $organization->update([
+            'name' => $request->name,
+            'image' => $imageName, 
+            'description' => $request->description,
+            'url' => $request->url,
+            'organization_type' => $request->organization_type,
+            'contact' => $request->contact,
+            'email' => $request->email,
+            'updated_at' => now()
+        ]);
+    
+        return to_route('organizations.index')->with('success', 'Organization updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Organization $organization)
     {
-        //
+        if ($organization->image && file_exists(public_path('images/organizations/'.$organization->image))) {
+            unlink(public_path('images/organizations/'.$organization->image)); // Delete the image file
+        }
+    
+        $organization->delete();
+
+        return to_route('organizations.index')->with('success', 'Organization deleted successfully!');
     }
 }
