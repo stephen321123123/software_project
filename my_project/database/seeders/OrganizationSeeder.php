@@ -29,7 +29,7 @@ class OrganizationSeeder extends Seeder
             ],
             [
                 'name' => 'Pocket Forests',
-                'image' => 'image02.png',
+                'image' => 'image02.jpg',
                 'description' => 'Pocket Forests is a social enterprise, accelerating social change through the power of people and plants. Pocket Forests was set up in Dublin in 2020 by Ashe Conrad-Jones and Catherine Cleary. Its our very own method of planting native trees, shrubs and groundcover plants in small urban areas. We follow some of the Miyawaki technique. Akira Miyawaki was a Japanese botanist who pioneered a technique for growing a forest of native trees, with dense, mixed native planting which mimics the layers of a natural forest. ',
                 'url' => 'https://www.pocketforests.ie/',
                 'organization_type' => 'Forestry',
@@ -51,7 +51,7 @@ class OrganizationSeeder extends Seeder
             ],
             [
                 'name' => 'Kildare Wildlife Rescue',
-                'image' => 'image04.jpg',
+                'image' => 'image05.jpg',
                 'description' => 'We are a volunteer-run charity organisation dedicated to the rescue, rehabilitation, and return of injured, sick and orphaned wildlife in Kildare and beyond. Our dedicated team of over 100 volunteers work hard to minimise the suffering of Ireland’s wildlife. Our aim is always to return animals in our care to the wild.',
                 'url' => 'https://www.kwr.ie/',
                 'organization_type' => 'Wildlife',
@@ -62,7 +62,7 @@ class OrganizationSeeder extends Seeder
             ],
             [
                 'name' => 'National Parks and Wildlife Service',
-                'image' => 'image05.png',
+                'image' => 'image04.png',
                 'description' => 'To secure the conservation of a representative range of ecosystems to maintain and enhance populations of flora and fauna in Ireland. To designate and advise on the protection of habitats and species identified for nature conservation (Natural Heritage Areas (NHA), Special Areas of Conservation (SAC) and Special Protection Areas (SPA) having particular regard to the need to consult with interested parties. To make the necessary arrangements for the implementation of National and EU legislation and policies for nature conservation and biodiversity including the EU Habitats and Birds Directives, and for the ratification and implementation of the range of international Conventions and Agreements relating to the natural heritage.',
                 'url' => 'https://www.npws.ie/',
                 'organization_type' => 'Forestry/Wildlife',
@@ -70,7 +70,35 @@ class OrganizationSeeder extends Seeder
                 'email' => 'natureconservation@npws.gov.ie',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ]);
+
+        foreach ($organizations as $organization) {
+            // Check if the image exists in the public storage, otherwise upload the default image
+            if (!Storage::disk('public')->exists('images/organization/' . $organization['image'])) {
+                // Here, you could upload an image manually or programmatically
+                // Assuming you have the images stored locally in `storage/app/public/images/organization/`
+                $imagePath = storage_path('app/public/images/organization/' . $organization['image']);
+                
+                if (file_exists($imagePath)) {
+                    // If image exists, copy it to public storage
+                    Storage::disk('public')->put('images/organization/' . $organization['image'], file_get_contents($imagePath));
+                }
+            }
+
+            // Insert organization record
+            Organization::create([
+                'name' => $organization['name'],
+                'image' => $organization['image'],
+                'description' => $organization['description'],
+                'url' => $organization['url'],
+                'organization_type' => $organization['organization_type'],
+                'contact' => $organization['contact'],
+                'email' => $organization['email'],
+                'created_at' => $currentTimestamp,
+                'updated_at' => $currentTimestamp,
+            ]);
+
     }
+}
 }

@@ -16,7 +16,6 @@
                     <h3 class="font-semibold text-lg mb-4">Maps:</h3>
                     <div class="grid grid-cols1 gap-6">
                         @foreach($locations as $location)
-                            <a href="{{ route('locations.show', $location)}}">
                                 <x-location-card
                                     :name="$location->name"
                                     :tree_type="$location->tree_type"
@@ -24,7 +23,6 @@
                                     :latitude="$location->latitude"
                                     :longitude="$location->longitude"
                                 />
-                            </a>
                         @endforeach
                     </div>
                 </div>
