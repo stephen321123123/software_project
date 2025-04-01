@@ -15,7 +15,7 @@
                         {{ __('Create new Organization') }}
                     </x-nav-link>
                     <x-nav-link :href="route('locations.index')" :active="request()->routeIs('locations.index')" class="text-gray-800 hover:text-green-200">
-                        {{ __('Inter-Active Map') }}
+                        {{ __('Forest Details') }}
                     </x-nav-link>
                     <x-nav-link :href="route('map')" :active="request()->routeIs('map')" class="text-gray-800 hover:text-green-200">
                         {{ __('Inter-Active Map') }}

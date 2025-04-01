@@ -9,36 +9,50 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
     <style>
-        /* General body and page styling */
+        /* Global Styling */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9fafb;
             margin: 0;
             padding: 0;
             color: #333;
         }
 
-        /* Header styling */
         h1 {
             text-align: center;
             color: #2C3E50;
-            margin: 20px;
-            font-size: 2em;
+            margin: 40px 0;
+            font-size: 2.5em;
+            font-weight: 500;
         }
 
-        /* Map container styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Map Styling */
         #map {
             height: 500px;
             width: 100%;
-            border: 2px solid #ddd;
             border-radius: 8px;
-            margin: 0 auto;
+            margin-top: 20px;
         }
 
-        /* Popup and marker styling */
+        /* Card Styling for the Map Container */
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Popup Styling */
         .leaflet-popup-content {
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: #555;
         }
 
@@ -50,12 +64,36 @@
             color: #16A085;
         }
 
-        /* Adding some padding and centering the content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        .leaflet-popup-content .popup-header {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 10px;
         }
+
+        .leaflet-popup-content .popup-text {
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* Small Cards for Better Layout */
+        .popup-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .popup-card img {
+            border-radius: 8px;
+            object-fit: cover;
+            width: 100%;
+            height: 150px;
+        }
+
+        .popup-card p {
+            font-size: 13px;
+            color: #555;
+        }
+
     </style>
 </head>
 
