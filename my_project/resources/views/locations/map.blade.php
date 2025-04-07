@@ -94,10 +94,55 @@
             color: #555;
         }
 
+        /* Navigation Styling */
+        nav {
+            background: linear-gradient(to bottom, #16A34A, #ffffff);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 22px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            padding-left: 400px
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #16A085;
+        }
+
     </style>
 </head>
 
 <body>
+
+  <!-- Navigation Bar -->
+  <nav x-data="{ open: false }" class="bg-gradient-to-b from-green-600 to-white border-b border-gray-100">
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/organizations" class="nav-link">Organizations</a>
+                <a href="/organizations/create" class="nav-link">Create new Organization</a>
+                <a href="/locations" class="nav-link">Forest Details</a>
+                <a href="/map" class="nav-link">Inter-Active Map</a>
+            </div>
+        
+    </nav>
 
     <div class="container">
         <h1>Interactive Map of Ireland</h1>

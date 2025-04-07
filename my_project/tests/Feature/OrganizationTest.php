@@ -31,7 +31,7 @@ class OrganizationTest extends TestCase
                                  'organization_type' => 'Forestry',
                                  'contact' => '818367378',
                                  'email' => 'info@faketest.ie',
-                                 // 'image' => $fakeImage,  // Remove or comment out this line
+                                 'image' => $fakeImage,  // Remove or comment out this line
                              ]);
         
             // Assert that the response redirects to the organizations index (or your desired route)
