@@ -161,7 +161,7 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Hardcoded locations from your seeder data
+        // Hardcoded locations from my seeder data
         var locations = [
             {
                 name: "Glengarriff Woods Nature Reserve",

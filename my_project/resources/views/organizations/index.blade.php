@@ -4,7 +4,7 @@
             {{__('All Organizations') }}
         </h2>
     </x-slot>
-
+        <!--Success alert -->
     <x-alert-success>
         {{ session('success') }}
     </x-alert-success>
@@ -14,6 +14,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">List of Organizations:</h3>
+                    <!--The grid layout for the cards of organization -->
                     <div class="grid grid-cols-1 gap-6">
                         @foreach($organizations as $organization)
                             <div class="bg-white p-4 shadow-lg rounded-lg">

@@ -10,7 +10,7 @@
             <div class="ng-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">Edit New Organization:</h3>
-
+                        <!--Re-usable organization form componet -->
                     <x-organization-form 
                     :action="route('organizations.update', $organization)"
                     :method="'PUT'"
